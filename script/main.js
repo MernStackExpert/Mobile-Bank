@@ -1,50 +1,4 @@
 
-// const tranSaction = []
-
-const transactionData = [];
-
-// function tranSactionHistory(id){
-
-//   const data = {
-//     name: id ,
-//     date: new Date().toLocaleTimeString()
-//   }
-
-//   return transactionData.push(data);
-// }
-
-
-document.getElementById("transaction-btn").addEventListener('click' , function(){
-  
-  const transactionContainer = document.getElementById("transaction-container");
-
-  transactionContainer.innerText = " " ;
-
-  for(const data of transactionData){
-    const div = document.createElement("div")
-    div.innerHTML = `
-       <div class="bg-white p-3 flex justify-between items-center rounded-[10px]">
-
-            <div class="flex items-center">
-            <div class="p-3 rounded-full bg-[#f4f5f7]">
-               <img src="./assets/wallet1.png " alt="add money" />
-            </div>
-            <div class="ml-3">
-              <h1>${data.name}</h1>
-              <p>${data.date}</p>
-            </div>
-          </div>
-            <div class="cursor-pointer">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
-          </div>
-    `
-
-     transactionContainer.appendChild(div);
-  }
-
-})
-
 
 // use case function container
 
@@ -164,7 +118,10 @@ document.getElementById("add-money").addEventListener("click", function (event) 
 
    transactionData.push(data);
 
+    alert("Money ADDED ✅")
+
   });
+  
 
 // cash out section
 
@@ -208,6 +165,8 @@ document
   }
 
    transactionData.push(data);
+
+   alert("Cash Out successfull ✅")
   });
 
   // transfer section
@@ -239,12 +198,18 @@ document
 
     if(transferMoneyInput > money){
       alert("Invalid Money")
+      return;
     }else{
 
     let transfer = money - parseInt(transferMoneyInput);
 
     document.getElementById("money").innerText = transfer
     }
+
+    // mt input 
+
+    document.getElementById("transfer-amount").value = "";
+    document.getElementById("transfer-pin-num").value = "";
 
     // transactionData 
     const data = {
@@ -253,7 +218,9 @@ document
   }
 
    transactionData.push(data);
+
     
+   alert(`Money Transfer ${userTransferNumber} ✅ `)
     
   })
 
@@ -285,6 +252,7 @@ document
 
    transactionData.push(data);
 
+   alert("You Got Bonus $1000 ✅")
   })
 
 
@@ -331,4 +299,41 @@ document
 
    transactionData.push(data);
 
+   alert("Bill Pay Successful ✅")
   })
+
+
+  // transaction history 
+  
+const transactionData = [];
+
+document.getElementById("transaction-btn").addEventListener('click' , function(){
+  
+  const transactionContainer = document.getElementById("transaction-container");
+
+  transactionContainer.innerText = " " ;
+
+  for(const data of transactionData){
+    const div = document.createElement("div")
+    div.innerHTML = `
+       <div class="bg-white p-3 flex justify-between items-center rounded-[10px]">
+
+            <div class="flex items-center">
+            <div class="p-3 rounded-full bg-[#f4f5f7]">
+               <img src="./assets/wallet1.png " alt="add money" />
+            </div>
+            <div class="ml-3">
+              <h1>${data.name}</h1>
+              <p>${data.date}</p>
+            </div>
+          </div>
+            <div class="cursor-pointer">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+          </div>
+    `
+
+     transactionContainer.appendChild(div);
+  }
+
+})
