@@ -122,7 +122,7 @@ document.getElementById("add-money").addEventListener("click", function (event) 
     date: new Date().toLocaleTimeString()
   }
 
-   transactionData.push(data);
+   transactionData.unshift(data);
 
     alert("Money ADDED ✅")
 
@@ -170,7 +170,7 @@ document
     date: new Date().toLocaleTimeString()
   }
 
-   transactionData.push(data);
+   transactionData.unshift(data);
 
    alert("Cash Out successfull ✅")
   });
@@ -223,7 +223,7 @@ document
     date: new Date().toLocaleTimeString()
   }
 
-   transactionData.push(data);
+   transactionData.unshift(data);
 
     
    alert(`Money Transfer ${userTransferNumber} ✅ `)
@@ -257,7 +257,7 @@ document
     date: new Date().toLocaleTimeString()
   }
 
-   transactionData.push(data);
+   transactionData.unshift(data);
 
    alert("You Got Bonus $1000 ✅")
   })
@@ -298,13 +298,15 @@ document
     document.getElementById("pay-money-input").value = ''
     document.getElementById("paybill-pin-number").value = ''
 
+
     // transactionData 
+
     const data = {
     name: "Pay Bill" ,
     date: new Date().toLocaleTimeString()
   }
 
-   transactionData.push(data);
+   transactionData.unshift(data);
 
    alert("Bill Pay Successful ✅")
   })
@@ -318,7 +320,8 @@ document.getElementById("transaction-btn").addEventListener('click' , function()
   
   const transactionContainer = document.getElementById("transaction-container");
 
-  transactionContainer.innerText = " " ;
+  transactionContainer.innerText = "" ;
+  
 
   for(const data of transactionData){
     const div = document.createElement("div")
@@ -342,5 +345,18 @@ document.getElementById("transaction-btn").addEventListener('click' , function()
 
      transactionContainer.appendChild(div);
   }
+
+  // condition চেক
+if (transactionContainer.innerText.trim() === "") {
+  const h1 = document.createElement("h1");
+  h1.classList.add("font-bold", "text-center", "no-transaction");
+  h1.innerText = "No Transaction. Please use our feature.";
+  transactionContainer.appendChild(h1);
+} else {
+  const noTransactionMsg = transactionContainer.querySelector(".no-transaction");
+  if (noTransactionMsg) {
+    transactionContainer.removeChild(noTransactionMsg);
+  }
+}
 
 })
