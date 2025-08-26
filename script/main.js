@@ -75,6 +75,12 @@ document.getElementById("transaction-btn").addEventListener('click', function(){
 
 /// ADD EVENT LISTENER container
 
+// logout btn 
+
+document.getElementById("logout-btn").addEventListener('click' , function(){
+  window.location.href = "index.html"
+})
+
 // add section
 
 document.getElementById("add-money").addEventListener("click", function (event) {
@@ -238,6 +244,7 @@ document
       document.getElementById("money").innerText = bonus
     }else{
       alert("Type [ coupon ] to get bonus.")
+      return;
     }
 
     // mt input 

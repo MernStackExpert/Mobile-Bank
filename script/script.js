@@ -1,7 +1,7 @@
 document.getElementById("login-btn")
 .addEventListener("click", function () {
 
-  const number = 12345678910;
+  // const number = 12345678910;
   const pass = 1234;
 
   let loginInput1 = document.getElementById("login-input-1").value
@@ -11,7 +11,9 @@ document.getElementById("login-btn")
     return alert("Plese Provide Username and Password.");
   }
 
-  if(parseInt(loginInput1 ) === number && parseInt(loginInput2) === pass){
+  console.log(loginInput1.length)
+
+  if(loginInput1.length >= 11 && parseInt(loginInput2) === pass){
     window.location.href = "main.html"
   }else{
     alert("you are type wrong password")
